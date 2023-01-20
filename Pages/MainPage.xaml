@@ -1,0 +1,38 @@
+﻿<Page x:Class="lab4.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:lab4"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+    <Grid>
+        <Button Content="Добавить в словарь" Margin="0,0,414.6,94.6" Height="44" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="120" Command="{Binding AddVocabulary}"/>
+        <TextBox x:Name="EngWordBox" HorizontalAlignment="Right" Height="23" Margin="0,0,414.6,225.6" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" Text="{Binding English}"/>
+        <TextBox HorizontalAlignment="Right" Height="23" Margin="0,0,414.6,165.6" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" Text="{Binding Russian}"/>
+        <Label Content="Слово на английском" HorizontalAlignment="Right" Margin="0,0,409.6,253.6" VerticalAlignment="Bottom" Width="130"/>
+        <Label Content="Слово на русском" HorizontalAlignment="Right" Margin="0,0,414.6,188.6" VerticalAlignment="Bottom" Width="120"/>
+        <ListBox x:Name="WordsList" HorizontalAlignment="Left" Margin="10,0,0,39.6" Width="232" Height="267" VerticalAlignment="Bottom" ItemsSource="{Binding Vocabular}" SelectedItem="{Binding SelectedWord}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding English}" Grid.Column="0"/>
+                        <TextBlock Text="{Binding Russian}" Grid.Column="2"/>
+                        <TextBlock Text=" - " Grid.Column ="1"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Удалить из словаря" HorizontalAlignment="Right" Margin="0,0,413,40.6" VerticalAlignment="Bottom" Width="120" Height="36" Command="{Binding DeleteVocabulary}"/>
+        <Button Content="Загрузить в файл" HorizontalAlignment="Left" Margin="31,51,0,0" VerticalAlignment="Top" Width="137" Height="44" Command="{Binding WriteFile}"/>
+        <Button Content="Загрузить из файла" Margin="0,51,461,0" VerticalAlignment="Top" Height="44" Command="{Binding ReadFile}" HorizontalAlignment="Right" Width="123"/>
+        <Button Content="Играть в &quot;Переведи слово&quot;" HorizontalAlignment="Left" Margin="515,0,0,164.6" VerticalAlignment="Bottom" Width="192" Height="110"  Command="{Binding OpenPageTranslateGame}"/>
+
+    </Grid>
+</Page>
